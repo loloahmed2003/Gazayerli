@@ -1,0 +1,26 @@
+﻿@model Gazayerli_Task.Models.Cases
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <br />
+    <hr />
+    <dl class="dl-horizontal" style="margin-bottom: 4%;">
+        <dt>
+            @Html.DisplayNameFor(model => model.CaseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CaseName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CaseID }, new { @class = "btn btn-info" }) |
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-success" })
+</p>

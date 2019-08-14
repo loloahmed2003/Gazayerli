@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Gazayerli_Task.Models.LawyerCases>
+
+@{
+    ViewBag.Title = "GetLawyerCase";
+}
+
+<h2>GetLawyerCase</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Case.CaseName)
+        </th>
+        <th>
+           <label>Full Name</label>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AssignDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExpiredDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalHours)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Case.CaseName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lawyer.ApplicationUser.FirstName)
+            @Html.DisplayFor(modelItem => item.Lawyer.ApplicationUser.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AssignDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExpiredDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalHours)
+        </td>
+        <td>
+            @Html.ActionLink("Expired", "Expired", "Admin", new { CaseID = item.CaseID, LawyerID = item.LawyerID }, new { @class = "btn btn-warning" })
+            @Html.ActionLink("Bill", "Bill", "Admin", new { CaseID = item.CaseID, LawyerID = item.LawyerID }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>
